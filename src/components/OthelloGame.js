@@ -567,14 +567,17 @@ const OthelloGame = () => {
       </div>
       
       {/* ヒントボタン */}
-      {!gameOver && (gameMode !== 'cpu' || (gameMode === 'cpu' && currentPlayer === BLACK)) && (
-        <button
-          onClick={() => setShowHint(!showHint)}
-          className={`mb-2 px-4 py-1 text-sm rounded transition-all duration-200 ${designs.button}`}
-        >
-          💡 {showHint ? 'ヒント非表示' : 'ヒント表示'}
-        </button>
-      )}
+      {/* ヒントボタン */}
+      <div className="mb-2 h-8 flex items-center justify-center">
+        {!gameOver && (gameMode !== 'cpu' || (gameMode === 'cpu' && currentPlayer === BLACK)) && (
+          <button
+            onClick={() => setShowHint(!showHint)}
+            className={`px-4 py-1 text-sm rounded transition-all duration-200 ${designs.button}`}
+          >
+            💡 {showHint ? 'ヒント非表示' : 'ヒント表示'}
+          </button>
+        )}
+      </div>
       
       <div className={`grid grid-cols-8 gap-1 p-2 rounded-lg mb-4 shadow-2xl ${designs.boardBg}`}>
         {board.map((row, rowIndex) =>
