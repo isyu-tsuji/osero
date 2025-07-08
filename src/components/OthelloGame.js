@@ -566,18 +566,6 @@ const OthelloGame = () => {
         )}
       </div>
       
-      {/* ヒントボタン */}
-      {/* ヒントボタン */}
-      <div className="mb-2 h-8 flex items-center justify-center">
-        {!gameOver && (gameMode !== 'cpu' || (gameMode === 'cpu' && currentPlayer === BLACK)) && (
-          <button
-            onClick={() => setShowHint(!showHint)}
-            className={`px-4 py-1 text-sm rounded transition-all duration-200 ${designs.button}`}
-          >
-            💡 {showHint ? 'ヒント非表示' : 'ヒント表示'}
-          </button>
-        )}
-      </div>
       
       <div className={`grid grid-cols-8 gap-1 p-2 rounded-lg mb-4 shadow-2xl ${designs.boardBg}`}>
         {board.map((row, rowIndex) =>
@@ -609,12 +597,23 @@ const OthelloGame = () => {
         )}
       </div>
       
-      <button
-        onClick={resetGame}
-        className={`px-6 py-2 rounded-lg transition-all duration-200 font-semibold ${designs.button}`}
-      >
-        新しいゲーム
-      </button>
+      <div className="flex gap-4 items-center">
+        <button
+          onClick={resetGame}
+          className={`px-6 py-2 rounded-lg transition-all duration-200 font-semibold ${designs.button}`}
+        >
+          新しいゲーム
+        </button>
+        
+        {!gameOver && (gameMode !== 'cpu' || (gameMode === 'cpu' && currentPlayer === BLACK)) && (
+          <button
+            onClick={() => setShowHint(!showHint)}
+            className={`px-4 py-2 rounded-lg transition-all duration-200 text-sm ${designs.button}`}
+          >
+            💡 {showHint ? 'ヒント非表示' : 'ヒント表示'}
+          </button>
+        )}
+      </div>
       
       <div className={`mt-4 text-sm text-center max-w-md ${designs.text} opacity-75`}>
         💡ヒントボタンで最適手を確認できます
